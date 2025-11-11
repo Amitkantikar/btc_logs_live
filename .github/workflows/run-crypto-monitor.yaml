@@ -1,12 +1,12 @@
-name: BTC Live Monitor (Every 4 Hours)
+name: BTC Live Monitor (Every 5 Minutes)
 
 on:
   schedule:
-    - cron: "0 */4 * * *"   # Runs every 4 hours UTC
-  workflow_dispatch:        # Manual trigger
+    - cron: "*/5 * * * *"   # ⏰ Runs every 5 minutes (UTC)
+  workflow_dispatch:         # Allows manual trigger from GitHub Actions UI
 
 permissions:
-  contents: write   # Needed so we can push updated logs to repo
+  contents: write   # Required to push logs or updates back to the repo
 
 jobs:
   run-script:
@@ -25,7 +25,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install ccxt pandas numpy
+          python -m pip install --upgrade pip
+          pip install ccxt pandas numpy pyodbc tqdm ta
 
       - name: Run live crypto monitor
         run: python live_trend_following_monitor_txt.py
@@ -34,9 +35,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-
-          git add live_trades_log.txt
-          git add last_summary_date.txt
-
+          git add live_trades_log.txt || true
+          git add last_summary_date.txt || true
           git commit -m "Auto-update: trade logs & daily summary" || echo "No changes to commit"
-          git push
+          git push || echo "No changes pushed"
