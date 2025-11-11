@@ -275,7 +275,7 @@ def check_exit_conditions(df, trade):
 # MAIN (single run for GitHub Actions)
 # ===============================================================
 def live_monitor_once():
-    exchange = ccxt.binance({"enableRateLimit": True})
+    exchange = ccxt.binanceus({"enableRateLimit": True})
 
     generate_daily_summary()
     log("🔁 Running 4-hour cycle...")
@@ -336,3 +336,4 @@ def live_monitor_once():
 # ===============================================================
 if __name__ == "__main__":
     live_monitor_once()
+
