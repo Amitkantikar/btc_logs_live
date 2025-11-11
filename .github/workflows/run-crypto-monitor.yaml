@@ -1,9 +1,9 @@
-name: BTC Live Monitor (Every 5 Minutes)
+name: BTC Live Monitor (Every 4 Hours)
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # ⏰ Runs every 5 minutes (UTC)
-  workflow_dispatch:         # Allows manual trigger from GitHub Actions UI
+    - cron: "0 */4 * * *"    # ⏰ Runs every 4 hours (UTC)
+  workflow_dispatch:         # Allows manual trigger
 
 permissions:
   contents: write   # Required to push logs or updates back to the repo
