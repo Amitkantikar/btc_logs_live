@@ -89,3 +89,11 @@ No trades yesterday.
 [2025-11-14 20:25:09] 🔁 Running 4-hour cycle...
 [2025-11-14 20:25:10] Cycle complete.
 
+
+===== DAILY SUMMARY (2025-11-14) =====
+No trades yesterday.
+=================================
+
+[2025-11-15 01:42:24] 🔁 Running 4-hour cycle...
+[2025-11-15 01:42:24] Cycle complete.
+
